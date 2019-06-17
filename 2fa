@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TWOFA_DIRECTORY="$HOME/.2fa"
+
+mkdir -p "$TWOFA_DIRECTORY"
+
+arg=$1
+
+case $arg in
+	[iI] | [iI][nN][iI][tT] ) bash ./2fa_init.sh -d="$TWOFA_DIRECTORY" "$@"
+		;;
+	*) bash ./2fa_code.sh -s="$TWOFA_DIRECTORY/$1"
+		;;
+esac

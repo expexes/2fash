@@ -4,12 +4,12 @@ simple 2fa bash client
 
 ### Usage
 
-**Init service**
+**Init service:**
 ```
 ./2fa init
 ```
 
-**Get code**
+**Get code:**
 ```
 ./2fa <service_label>
 ```

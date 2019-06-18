@@ -12,5 +12,5 @@ check_deps
 echo "...moving bin to bin"
 cp -a . "$FASH_DIRECTORY_BIN"
 
-echo "...creating symbolic link in /usr/local/bin"
-sudo ln -s "${FASH_DIRECTORY_BIN}/2fash" "/usr/local/bin/"
+echo "...creating runnable in /usr/local/bin/2fash"
+sudo echo "bash $FASH_DIRECTORY_BIN/2fash" > /usr/local/bin/2fash

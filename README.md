@@ -22,12 +22,12 @@ cd 2fash
 ./2fash help
 ```
 
-**Create service:**
+**Create account:**
 ```sh
 ./2fash init
 ```
 
 **Get code:**
 ```sh
-./2fash code [LABEL]
+./2fash code [ACCOUNT]
 ```

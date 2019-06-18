@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source tools.sh
 
@@ -11,5 +11,5 @@ throw_error_if_account_exists() {
 }
 
 throw_error_if_account_secret_doesnt_exist() {
-	! [ -f "$FASH_DIRECTORY_ACCOUNTS/$1/.secret" ] && echo_error "secret file doesn't exist" && exit 12
+	! [[ -f "$FASH_DIRECTORY_ACCOUNTS/$1/.secret" ]] && echo_error "secret file doesn't exist" && exit 12
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source head.sh
 source format.sh
@@ -12,36 +12,37 @@ mkdir -p "$FASH_DIRECTORY_ACCOUNTS"
 arg=$1
 
 print_help() {
-	echo -e " ${FORMAT_BOLD}USAGE:${FORMAT_NORM} ./2fash [ACTION] ${FROMAT_DIM}?${FORMAT_NORM}[ACCOUNT] [OPTION]..."
-	echo ""	
-	echo -e " ${FORMAT_BOLD}ACTIONS:${FORMAT_NORM}"
-	echo -e "\thelp,\th \t\t- show help"
-	echo -e "\tinit,\ti \t\t- add a new account"
-	echo -e "\tcode,\tc \t\t- get 2fa code for account"
-	echo -e "\tlist,\tls \t\t- print accounts"
-	echo -e "\tremove,\trm \t\t- remove account"
+	print_help_usage_head "${FASH_COMMAND} [ACTION] ${FORMAT_LYELLOW}?${FORMAT_NORM}[ACCOUNT] [OPTION]..."
+	echo ""
+	print_help_head "ACTIONS"
+	print_help_command "help,\th" "show help"
+	print_help_command "init,\ti" "add a new account"
+	print_help_command "code,\tc" "get 2fa code for account"
+	print_help_command "list,\tls" "print accounts"
+	print_help_command "remove,\trm" "remove account"
 }
 
-case $arg in
+case ${arg} in
 	[hH] | [hH][eE][lL][pP] )
-		print_header
-
-		print_help
-		echo ""
-		# echo "Options:"
+			print_header
+			print_help
+			echo ""
 		;;
-	[iI] | [iI][nN][iI][tT] ) bash ./2fash_init.sh -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
+	[iI] | [iI][nN][iI][tT] )
+			bash 2fash_init.sh -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
 		;;
-	[cC] | [cC][oO][dD][eE] ) bash ./2fash_code.sh -a="$2" "$@"
+	[cC] | [cC][oO][dD][eE] )
+			bash 2fash_code.sh -a="$2" "$@"
 		;;
-	[lL][sS] | [lL][iI][sS][tT] ) bash ./2fash_list.sh "$@"
+	[lL][sS] | [lL][iI][sS][tT] )
+			bash 2fash_list.sh "$@"
 		;;
-	[rR][mM] | [rR][eE][mM][oO][vV][eE] ) bash ./2fash_remove.sh -a="$2" "$@"
+	[rR][mM] | [rR][eE][mM][oO][vV][eE] )
+			bash 2fash_remove.sh -a="$2" "$@"
 		;;
 	*)
-		echo ""
-		print_header
-		
-		print_help
+			print_header
+			print_help
+			echo ""
 		;;
 esac

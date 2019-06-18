@@ -1,38 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source head.sh
 source format.sh
 source tools.sh
 
 print_help_list() {
+	print_help_usage_head "${FASH_COMMAND} list [OPTION]..."
 	echo ""
-	echo -e " ${FORMAT_BOLD}USAGE:${FORMAT_NORM} ./2fash list [OPTION]..."
-	echo ""	
-	echo -e " ${FORMAT_BOLD}OPTIONS:${FORMAT_NORM}"
-	echo -e "\t--help, -h \t\t- show help"
-	echo -e "\t--clear, -c \t\t- clear format"
+	print_help_head "OPTIONS"
+	print_help_command "--help, -h" "show help"
+	print_help_command "--clear, -c" "clear format"
 }
 
 CLEAR_PRINT=0
 
 for arg in "$@"; do
-	case $arg in
+	case ${arg} in
 		--clear|-c)
 			CLEAR_PRINT=1
 			shift			
 			;;
 		--help|-h)
+			echo ""
 			print_help_list
 			exit 0
 			;;
 	esac
 done
 
-accounts=$(find $FASH_DIRECTORY_ACCOUNTS/* -maxdepth 0 -type d -printf "%f\n")
+accounts=$(find ${FASH_DIRECTORY_ACCOUNTS}/* -maxdepth 0 -type d -printf "%f\n")
 
-for account in $accounts; do
+for account in ${accounts}; do
 	echo -en "$account"
-	if [[ $CLEAR_PRINT == 0 ]]; then
+	if [[ ${CLEAR_PRINT} == 0 ]]; then
 		[[ $(is_account_encrypted "$account") == 1 ]] &&
 			echo -en " ${FORMAT_LGREEN}(encrypted)${FORMAT_NORM}" ||
 			echo -en " ${FORMAT_LRED}(not encrypted)${FORMAT_NORM}"

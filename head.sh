@@ -1,13 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ -z "$FASH_DIRECTORY" ]; then
-    FASH_DIRECTORY="$HOME/.2fash"
-fi
+FASH_COMMAND="2fash"
 
-if [ -z "$FASH_DIRECTORY_BIN" ]; then
-    FASH_DIRECTORY_BIN="$FASH_DIRECTORY/bin"
-fi
+[[ -z "$FASH_DIRECTORY" ]] && FASH_DIRECTORY="$HOME/.2fash"
 
-if [ -z "$FASH_DIRECTORY_ACCOUNTS" ]; then
-	FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"
-fi
+[[ -z "$FASH_DIRECTORY_BIN" ]] && FASH_DIRECTORY_BIN="$FASH_DIRECTORY/bin"
+
+[[ -z "$FASH_DIRECTORY_ACCOUNTS" ]] && FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"

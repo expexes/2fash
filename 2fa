@@ -2,6 +2,8 @@
 
 source format.sh
 
+check_deps
+
 TWOFA_DIRECTORY="$HOME/.2fa"
 
 mkdir -p "$TWOFA_DIRECTORY"
@@ -10,17 +12,19 @@ arg=$1
 
 case $arg in
 	[hH] | [hH][eE][lL][pP] )
-		echo -e "${FORMAT_BOLD}USAGE:${FORMAT_NORM} 2fa [ACTION] ${FROMAT_DIM}?${FORMAT_NORM}[LABEL] [OPTION]..."
+		print_header
+
+		echo -e " ${FORMAT_BOLD}USAGE:${FORMAT_NORM} ./2fa [ACTION] ${FROMAT_DIM}?${FORMAT_NORM}[LABEL] [OPTION]..."
 		echo ""	
-		echo -e "${FORMAT_BOLD}ACTIONS:${FORMAT_NORM}"
+		echo -e " ${FORMAT_BOLD}ACTIONS:${FORMAT_NORM}"
 		echo -e "\thelp, h \t\t- show this text"
 		echo -e "\tinit, i \t\t- create service"
 		echo -e "\tcode, c \t\t- get 2fa code for certain service"
 		# echo ""	
 		# echo "Options:"
 		;;
-	[iI] | [iI][nN][iI][tT] ) bash ./2fa_init.sh -d="$TWOFA_DIRECTORY" "$@"
+	[iI] | [iI][nN][iI][tT] ) source ./2fa_init.sh -d="$TWOFA_DIRECTORY" "$@"
 		;;
-	[cC] | [cC][oO][dD][eE] ) bash ./2fa_code.sh -s="$TWOFA_DIRECTORY/$2"
+	[cC] | [cC][oO][dD][eE] ) source ./2fa_code.sh -s="$TWOFA_DIRECTORY/$2"
 		;;
 esac

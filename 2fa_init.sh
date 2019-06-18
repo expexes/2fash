@@ -2,15 +2,8 @@
 
 source format.sh
 
-echo ""
-echo -en "\t ____  _____ _\n"
-echo -en "\t|___ \|  ___/ _\\n"
-echo -en "\t  __) | |_ / _ _\\n"
-echo -en "\t / __/|  _/ ___ _\\n"
-echo -en "\t|_____|_|/_/   \__\\n"
-echo ""
-echo ""
-
+check_deps
+print_header
 
 
 shopt -s extglob

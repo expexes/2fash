@@ -2,6 +2,18 @@
 
 simple 2fa bash client
 
+### Installation
+
+**Dependencies:**
+- `oath-toolkit`
+
+```sh
+git clone https://gitlab.com/expexes/2fash.git
+cd 2fash
+```
+
+
+
 ### Usage
 
 **Get help:**

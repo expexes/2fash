@@ -1,5 +1,10 @@
 #!/bin/bash
 
+source format.sh
+
+check_deps
+
+
 TWOFA_DIRECTORY="$HOME/.2fa"
 service_directory="$TWOFA_DIRECTORY/$1"
 

@@ -6,6 +6,7 @@ simple 2fa bash client
 
 **Dependencies:**
 - `oath-toolkit`
+- `gnupg`
 
 ```sh
 git clone https://gitlab.com/expexes/2fash.git

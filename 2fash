@@ -40,6 +40,8 @@ case $arg in
 		;;
 	*)
 		echo ""
+		print_header
+		
 		print_help
 		;;
 esac

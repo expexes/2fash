@@ -27,7 +27,7 @@ new_gpg_ask() {
 	case $ask in
 		$YES_PATTERN)
 			echo -e "${FORMAT_NORM}"
-			gpg2 --full-gen-key --keyid-format long
+			gpg --full-gen-key --keyid-format long
 			;;
 		*)
 			;;
@@ -101,7 +101,7 @@ new_2fa_with_gpg() {
 	echo -en "uid: $gpg_uid\nkid: $gpg_kid" > "$gpgdata_file"
 	echo -en "$tfa_secret" > "$secret_file"
 
-	gpg2 -u "$gpg_kid" -r "$gpg_uid" --encrypt "$secret_file" && echo -en "\n "; rm "$secret_file"
+	gpg -u "$gpg_kid" -r "$gpg_uid" --encrypt "$secret_file" && echo -en "\n "; rm "$secret_file"
 
 	echo -e " ${FORMAT_NORM}Run following command to get the code: "
 	echo -e " ${FORMAT_INV}${FORMAT_BOLD}./2fash c $tfa_label${FORMAT_NORM}"

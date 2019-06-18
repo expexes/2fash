@@ -1,20 +1,22 @@
 #!/bin/bash
 
-check_deps() {
-	if ! [ -x "$(command -v oathtool)" ]; then
-		echo_error "intall oathtool"
-		echo -e " Arch\t${FORMAT_BOLD}sudo pacman -S oath-toolkit${FORMAT_NORM}"
-		echo -e " Fedora\t${FORMAT_BOLD}sudo dnf install oathtool${FORMAT_NORM}"
-		echo -e " Ubuntu\t${FORMAT_BOLD}sudo apt install oathtool${FORMAT_NORM}"
-		echo ""
-		exit 2
-	fi
+source format.sh
 
-	if ! [ -x "$(command -v gpg)" ]; then
-		echo_error "intall gnupg"
-		echo -e " Arch\t${FORMAT_BOLD}sudo pacman -S gnupg${FORMAT_NORM}"
-		echo -e " Fedora\t${FORMAT_BOLD}sudo dnf install gnupg2${FORMAT_NORM}"
-		echo -e " Ubuntu\t${FORMAT_BOLD}sudo apt install gpgv2${FORMAT_NORM}"
+check_deps() {
+	to_install_arch=()
+	to_install_fedora=()
+	to_install_ubuntu=()
+
+	install_deps=0
+
+	! [ -x "$(command -v oathtool)" ] && install_deps=1 && to_install_arch+=('oath-toolkit') && to_install_fedora+=('oathtool') && to_install_ubuntu+=('oathtool')
+	! [ -x "$(command -v gpg)" ] && install_deps=1 && to_install_arch+=('gpg gnupg') && to_install_fedora+=('gnupg2') && to_install_ubuntu+=('gpg gpgv2')
+
+	if [[ "$install_deps" == "1" ]]; then
+		echo_error "intall dependencies"
+		echo -e " Arch\t${FORMAT_BOLD}sudo pacman -S ${to_install_arch[@]}${FORMAT_NORM}"
+		echo -e " Fedora\t${FORMAT_BOLD}sudo dnf install ${to_install_fedora[@]}${FORMAT_NORM}"
+		echo -e " Ubuntu\t${FORMAT_BOLD}sudo apt install ${to_install_ubuntu[@]}${FORMAT_NORM}"
 		echo ""
 		exit 2
 	fi

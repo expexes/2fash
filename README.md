@@ -19,15 +19,15 @@ cd 2fash
 
 **Get help:**
 ```sh
-./2fa help
+./2fash help
 ```
 
 **Create service:**
 ```sh
-./2fa init
+./2fash init
 ```
 
 **Get code:**
 ```sh
-./2fa code [LABEL]
+./2fash code [LABEL]
 ```

@@ -6,15 +6,12 @@ source tools.sh
 
 check_deps
 
-mkdir -p "$FASH_DIRECTORY"
-mkdir -p "$FASH_DIRECTORY_ACCOUNTS"
-
 arg=$1
 
 print_help() {
-	print_help_usage_head "${FASH_COMMAND} [ACTION] ${FORMAT_LYELLOW}?${FORMAT_NORM}[ACCOUNT] [OPTION]..."
+	print_help_usage_head "${FASH_COMMAND} [COMMAND] ${FORMAT_LYELLOW}?${FORMAT_NORM}[ACCOUNT] [OPTION]..."
 	echo ""
-	print_help_head "ACTIONS"
+	print_help_head "COMMANDS"
 	print_help_command "help,\th" "show help"
 	print_help_command "init,\ti" "add a new account"
 	print_help_command "code,\tc" "get 2fa code for account"

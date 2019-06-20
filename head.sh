@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 FASH_COMMAND="2fash"
-PWD="$(pwd)"
 
-[[ -z "$FASH_DIRECTORY" ]] && FASH_DIRECTORY="$PWD/.2fash"
+[[ -z "$FASH_DIRECTORY" ]] && FASH_DIRECTORY="$HOME/.2fash"
 
 [[ -z "$FASH_DIRECTORY_BIN" ]] && FASH_DIRECTORY_BIN="$FASH_DIRECTORY/bin"
 

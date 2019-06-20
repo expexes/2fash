@@ -24,6 +24,14 @@ install_fash_bash() {
 	[[ $(grep -i 'source "$FASH_DIRECTORY/bin/bash/bash-init.sh"' "$HOME/.bashrc") ]] || echo '[[ -s "$FASH_DIRECTORY/bin/bash/bash-init.sh" ]] && source "$FASH_DIRECTORY/bin/bash/bash-init.sh"' >> "$HOME/.bashrc"
 }
 
+install_fash_fish() {
+	echo " ...Installing for fish"
+	mkdir -p "$HOME/.config/fish/functions"
+	mkdir -p "$HOME/.config/fish/completions"
+
+	cp -r ./fish/.config $HOME
+}
+
 install_fash() {
 	if [[ -d "$FASH_DIRECTORY_BIN" ]]; then
 		echo -en "You already have 2fash installed. Do you really want to install again? (y/N): "
@@ -38,6 +46,7 @@ install_fash() {
 
 	install_bin
 	install_fash_bash
+	install_fash_fish
 }
 
 check_deps

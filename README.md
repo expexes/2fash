@@ -8,12 +8,12 @@ simple 2fa bash client
 - `oath-toolkit`
 - `gnupg`
 
-**Using curl**
+**Using curl:**
 ```sh
 curl -s https://gitlab.com/expexes/2fash/raw/master/remote-install.sh | bash
 ```
 
-**Using git**
+**Using git:**
 ```sh
 git clone https://gitlab.com/expexes/2fash.git
 cd 2fash

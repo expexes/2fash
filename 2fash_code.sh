@@ -3,8 +3,21 @@
 ACCOUNT=""
 ACCOUNT_DIRECTORY=""
 
+__2fash_print_help_code() {
+	__2fash_print_help_usage_head "${FASH_COMMAND} code [ACCOUNT] [OPTION]..."
+	echo ""
+	__2fash_print_help_head "OPTIONS"
+	__2fash_print_help_command "--help, -h" "show help"
+}
+
+
 for arg in $@; do
 	case ${arg} in
+		--help|-h)
+			__2fash_print_help_code
+			exit 0
+			shift
+		;;
 		-d=*)
 			FASH_DIRECTORY="${arg#*=}"
 			shift
@@ -23,15 +36,21 @@ GPGDATA_FILE="$ACCOUNT_DIRECTORY/.gpgdata"
 SECRET_FILE="$ACCOUNT_DIRECTORY/.secret"
 SECRET_GPG_FILE="$ACCOUNT_DIRECTORY/.secret.gpg"
 
-if [[ $(__2fash_is_account_encrypted "$ACCOUNT") == 1 ]]; then
-	gpg_uid=$(cat "$GPGDATA_FILE" | grep uid | head --lines 1 | cut -b 5- | tr -d ' ')
-	gpg_kid=$(cat "$GPGDATA_FILE" | grep kid | head --lines 1 | cut -b 5- | tr -d ' ')
+if [[ "$ACCOUNT" != "" ]]; then
+	if [[ $(__2fash_is_account_encrypted "$ACCOUNT") == 1 ]]; then
+		gpg_uid=$(cat "$GPGDATA_FILE" | grep uid | head --lines 1 | cut -b 5- | tr -d ' ')
+		gpg_kid=$(cat "$GPGDATA_FILE" | grep kid | head --lines 1 | cut -b 5- | tr -d ' ')
 
-	totp=$(gpg --quiet -u "$gpg_kid" -r "$gpg_kid" --decrypt "$SECRET_GPG_FILE") || exit 1
+		totp=$(gpg --quiet -u "$gpg_kid" -r "$gpg_kid" --decrypt "$SECRET_GPG_FILE") || exit 1
+	else
+		__2fash_throw_error_if_account_secret_doesnt_exist "$ACCOUNT"
+
+		totp=$(cat "$SECRET_FILE")
+	fi
+
+	! [[ "$totp" == "" ]] && oathtool -b --totp "$totp"
 else
-	__2fash_throw_error_if_account_secret_doesnt_exist "$ACCOUNT"
-
-	totp=$(cat "$SECRET_FILE")
+	echo ""
+	__2fash_print_help_code
+	exit 0
 fi
-
-! [[ "$totp" == "" ]] && oathtool -b --totp "$totp"

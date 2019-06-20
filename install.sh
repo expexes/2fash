@@ -74,7 +74,12 @@ __2fash_install_fash() {
 	__2fash_install_fash_fish
 
 	echo ""
-	echo "Done"
+	echo " Done"
+	echo " Restart terminal or run the following command:"
+	echo ""
+	echo -e " source $FASH_DIRECTORY/bin/bash/bash-init.sh"
+	echo ""
+
 }
 
 __2fash_check_dependencies

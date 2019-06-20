@@ -42,11 +42,11 @@ FORMAT_LMAGENTA="\e[95m"
 FORMAT_CYAN="\e[36m"
 FORMAT_LCYAN="\e[96m"
 
-__2fish_echo_error() {
+__2fash_echo_error() {
 	echo -e "\n ${FORMAT_NORM}${FORMAT_RED}${FORMAT_BOLD}Error: ${FORMAT_NORM}${1}\n"
 }
 
-__2fish_print_header() {
+__2fash_print_header() {
 	echo ""
 	echo -e "\t ____  _____ _    ____  _   _ "
 	echo -e "\t|___ \|  ___/ _  / ___|| | | |"
@@ -57,11 +57,11 @@ __2fish_print_header() {
 	echo ""
 }
 
-__2fish_read_text_label_bold() {
-	echo -en " ${FORMAT_NORM}${1}: ${FORMAT_BOLD}${2}"
+__2fash_read_text_label_bold() {
+	echo -en " ${FORMAT_NORM}${1}: ${2}"
 }
 
-__2fish_read_text_label() {
+__2fash_read_text_label() {
 	echo -en " ${FORMAT_NORM}${1}: ${2}${FORMAT_NORM}"
 }
 
@@ -92,7 +92,7 @@ __2fash_check_dependencies() {
 	! [[ -x "$(command -v gpg)" ]] && install_deps=1 && to_install_arch+=('gpg gnupg') && to_install_fedora+=('gnupg2') && to_install_ubuntu+=('gpg gpgv2')
 
 	if [[ "$install_deps" == "1" ]]; then
-		__2fish_echo_error "install dependencies"
+		__2fash_echo_error "install dependencies"
 		echo -e " Arch\t${FORMAT_BOLD}sudo pacman -S ${to_install_arch[@]}${FORMAT_NORM}"
 		echo -e " Fedora\t${FORMAT_BOLD}sudo dnf install ${to_install_fedora[@]}${FORMAT_NORM}"
 		echo -e " Ubuntu\t${FORMAT_BOLD}sudo apt install ${to_install_ubuntu[@]}${FORMAT_NORM}"
@@ -112,15 +112,15 @@ __2fash_is_account_encrypted() {
 
 # --- ERRORS ---
 __2fash_throw_error_if_account_doesnt_exist() {
-	[[ $(__2fash_is_account_exists "$1") == "0" ]] && __2fish_echo_error "account doesn't exist" && exit 10
+	[[ $(__2fash_is_account_exists "$1") == "0" ]] && __2fash_echo_error "account doesn't exist" && exit 10
 }
 
 __2fash_throw_error_if_account_exists() {
-	[[ $(__2fash_is_account_exists "$1") == "1" ]] && __2fish_echo_error "account already exist" && exit 11
+	[[ $(__2fash_is_account_exists "$1") == "1" ]] && __2fash_echo_error "account already exist" && exit 11
 }
 
 __2fash_throw_error_if_account_secret_doesnt_exist() {
-	! [[ -f "$FASH_DIRECTORY_ACCOUNTS/$1/.secret" ]] && __2fish_echo_error "secret file doesn't exist" && exit 12
+	! [[ -f "$FASH_DIRECTORY_ACCOUNTS/$1/.secret" ]] && __2fash_echo_error "secret file doesn't exist" && exit 12
 }
 # --- END ERRORS ---
 
@@ -144,7 +144,7 @@ __2fash_check_dependencies
 
 case $1 in
 	[hH] | [hH][eE][lL][pP])
-		__2fish_print_header
+		__2fash_print_header
 		__2fash_print_help
 		echo ""
 		shift
@@ -170,7 +170,7 @@ case $1 in
 		shift
 	;;
 	*)
-		__2fish_print_header
+		__2fash_print_header
 		__2fash_print_help
 		echo ""
 	;;

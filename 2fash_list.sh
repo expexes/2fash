@@ -29,7 +29,7 @@ accounts=$(find ${FASH_DIRECTORY_ACCOUNTS}/* -maxdepth 0 -type d -printf "%f\n")
 for account in ${accounts}; do
 	echo -en "$account"
 	if [[ ${CLEAR_PRINT} == 0 ]]; then
-		[[ $(is_account_encrypted "$account") == 1 ]] &&
+		[[ $(__2fash_is_account_encrypted "$account") == 1 ]] &&
 			echo -en " ${FORMAT_LGREEN}(encrypted)${FORMAT_NORM}" ||
 			echo -en " ${FORMAT_LRED}(not encrypted)${FORMAT_NORM}"
 	fi

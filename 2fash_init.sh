@@ -42,16 +42,16 @@ __2fash_use_gpg_ask() {
 }
 
 __2fash_read_2fa() {
-	read_text_label_bold "2FA Label"
+	__2fash_read_text_label_bold "2FA Label"
 	read "$1"
 	[[ "$1" = "" ]] && echo_error "Invalid label" && exit 1
 	__2fash_throw_error_if_account_exists "$1"
 
-	read_text_label "2FA Secret"
+	__2fash_read_text_label "2FA Secret"
 	read -s "$2"
 }
 
-read_gpg_data() {
+__2fash_read_gpg_data() {
 	echo ""
 	__2fash_read_text_label_bold "GnuPG user id (email)"
 	read "$1"
@@ -85,7 +85,7 @@ __2fash_new_2fa_without_gpg() {
 }
 
 __2fash_new_2fa_with_gpg() {
-	read_gpg_data gpg_uid gpg_kid
+	__2fash_read_gpg_data gpg_uid gpg_kid
 
 	echo ""
 	__2fash_read_2fa tfa_label tfa_secret

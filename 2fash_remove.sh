@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 
-source head.sh
-source format.sh
-source tools.sh
-source errors.sh
-
 ACCOUNT=""
 ACCOUNT_DIRECTORY=""
 
 NO_PROMPT=0
 
-print_help_remove() {
-	print_help_usage_head "${FASH_COMMAND} remove [ACCOUNT] [OPTION]..."
+__2fash_print_help_remove() {
+	__2fash_print_help_usage_head "${FASH_COMMAND} remove [ACCOUNT] [OPTION]..."
 	echo ""
-	print_help_head "OPTIONS"
-	print_help_command "--help, -h" "show help"
-	print_help_command "--no-prompt, -np" "delete without ask"
+	__2fash_print_help_head "OPTIONS"
+	__2fash_print_help_command "--help, -h" "show help"
+	__2fash_print_help_command "--no-prompt, -np" "delete without ask"
 }
 
 
@@ -23,7 +18,7 @@ for arg in "$@"; do
 	case ${arg} in
 		--help|-h)
 				echo ""
-				print_help_remove
+				__2fash_print_help_remove
 				exit 0
 			;;
 		-a=*)
@@ -40,7 +35,7 @@ done
 
 if [[ "$ACCOUNT" != "" ]]; then
 	
-	throw_error_if_account_doesnt_exist "$ACCOUNT"
+	__2fash_throw_error_if_account_doesnt_exist "$ACCOUNT"
 	
 	if [[ ${NO_PROMPT} == 0 ]]; then
 		echo -en "Do you really want to delete ${FORMAT_BOLD}${FORMAT_YELLOW}${ACCOUNT}${FORMAT_NORM} account? (y/N): "
@@ -52,6 +47,6 @@ if [[ "$ACCOUNT" != "" ]]; then
 	rm -rf "$ACCOUNT_DIRECTORY" && echo "Deleted"
 else
 	echo ""
-	print_help_remove
+	__2fash_print_help_remove
 	exit 0
 fi

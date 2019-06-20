@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-FASH_DIRECTORY=$1
-
-[[ "$FASH_DIRECTORY" == "" ]] && FASH_DIRECTORY=$HOME/.2fash
-
 echo -en "Are you sure? (y/N): "
 read rusure
 [[ ! ${rusure} =~ [yY]|[yY][eE][sS] ]] && exit 0

@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-source head.sh
-source format.sh
-source tools.sh
-
-print_help_list() {
-	print_help_usage_head "${FASH_COMMAND} list [OPTION]..."
+__2fash_print_help_list() {
+	__2fash_print_help_usage_head "${FASH_COMMAND} list [OPTION]..."
 	echo ""
-	print_help_head "OPTIONS"
-	print_help_command "--help, -h" "show help"
-	print_help_command "--clear, -c" "clear format"
+	__2fash_print_help_head "OPTIONS"
+	__2fash_print_help_command "--help, -h" "show help"
+	__2fash_print_help_command "--clear, -c" "clear format"
 }
 
 CLEAR_PRINT=0
@@ -22,7 +18,7 @@ for arg in "$@"; do
 			;;
 		--help|-h)
 			echo ""
-			print_help_list
+			__2fash_print_help_list
 			exit 0
 			;;
 	esac

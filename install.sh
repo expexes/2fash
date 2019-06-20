@@ -27,7 +27,7 @@ install_fash_bash() {
 install_fash() {
 	if [[ -d "$FASH_DIRECTORY_BIN" ]]; then
 		echo -en "You already have 2fash installed. Do you really want to install again? (y/N): "
-		read really
+		read really < /dev/tty
 
 		[[ ! ${really} =~ [yY]|[yY][eE][sS] ]] && exit 0
 

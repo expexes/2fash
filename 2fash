@@ -23,26 +23,26 @@ print_help() {
 }
 
 case ${arg} in
-	[hH] | [hH][eE][lL][pP] )
-			print_header
-			print_help
-			echo ""
-		;;
-	[iI] | [iI][nN][iI][tT] )
-			bash 2fash_init.sh -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
-		;;
-	[cC] | [cC][oO][dD][eE] )
-			bash 2fash_code.sh -a="$2" "$@"
-		;;
-	[lL][sS] | [lL][iI][sS][tT] )
-			bash 2fash_list.sh "$@"
-		;;
-	[rR][mM] | [rR][eE][mM][oO][vV][eE] )
-			bash 2fash_remove.sh -a="$2" "$@"
-		;;
+	[hH] | [hH][eE][lL][pP])
+		print_header
+		print_help
+		echo ""
+	;;
+	[iI] | [iI][nN][iI][tT])
+		bash "$FASH_DIRECTORY_BIN/2fash_init.sh" -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
+	;;
+	[cC] | [cC][oO][dD][eE])
+		bash "./2fash_code.sh" -a="$2" "$@" # todo: fix
+	;;
+	[lL][sS] | [lL][iI][sS][tT])
+		bash "$FASH_DIRECTORY_BIN/2fash_list.sh" "$@"
+	;;
+	[rR][mM] | [rR][eE][mM][oO][vV][eE])
+		bash "$FASH_DIRECTORY_BIN/2fash_remove.sh" -a="$2" "$@"
+	;;
 	*)
-			print_header
-			print_help
-			echo ""
-		;;
+		print_header
+		print_help
+		echo ""
+	;;
 esac

@@ -8,19 +8,17 @@ source errors.sh
 ACCOUNT=""
 ACCOUNT_DIRECTORY=""
 
-ARGS=("$@")
-
-for arg in ${ARGS}; do
+for arg in $@; do
 	case ${arg} in
 		-d=*)
-				FASH_DIRECTORY="${arg#*=}"
-				shift
-			;;
+			FASH_DIRECTORY="${arg#*=}"
+			shift
+		;;
 		-a=*)
-				ACCOUNT="${arg#*=}"
-				ACCOUNT_DIRECTORY="${FASH_DIRECTORY_ACCOUNTS}/${ACCOUNT}"
-				shift
-			;;
+			ACCOUNT="${arg#*=}"
+			ACCOUNT_DIRECTORY="${FASH_DIRECTORY_ACCOUNTS}/${ACCOUNT}"
+			shift
+		;;
 	esac
 done
 
@@ -28,7 +26,7 @@ GPGDATA_FILE="$ACCOUNT_DIRECTORY/.gpgdata"
 SECRET_FILE="$ACCOUNT_DIRECTORY/.secret"
 SECRET_GPG_FILE="$ACCOUNT_DIRECTORY/.secret.gpg"
 
-if [[ $(is_account_encrypted "$ACCOUNT") == 1 ]] ; then
+if [[ $(is_account_encrypted "$ACCOUNT") == 1 ]]; then
 	gpg_uid=$(cat "$GPGDATA_FILE" | grep uid | head --lines 1 | cut -b 5- | tr -d ' ')
 	gpg_kid=$(cat "$GPGDATA_FILE" | grep kid | head --lines 1 | cut -b 5- | tr -d ' ')
 

@@ -86,7 +86,7 @@ new_2fa_without_gpg() {
 
 
 	echo ""
-	print_end "$tfa_secret"
+	print_end "$tfa_label"
 
 	exit 0
 }
@@ -109,7 +109,7 @@ new_2fa_with_gpg() {
 
 	gpg -u "$gpg_kid" -r "$gpg_uid" --encrypt "$secret_file" && echo -en "\n "; rm "$secret_file"
 
-	print_end "$tfa_secret"
+	print_end "$tfa_label"
 	echo ""
 
 	exit 0

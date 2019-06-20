@@ -1,6 +1,6 @@
 # 2fash
 
-simple 2fa bash client
+simple 2fa bash tool
 
 ### Installation
 

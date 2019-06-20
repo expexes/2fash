@@ -39,7 +39,7 @@ bash install.sh
 2fash code [ACCOUNT]
 ```
 
-**List accounts**
+**List accounts:**
 ```sh
 2fash list
 ```

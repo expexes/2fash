@@ -36,7 +36,7 @@ __2fash_check_dependencies() {
 }
 
 __2fash_install_bin() {
-	echo " ...Coping files to $HOME/.2fash/bin"
+	echo " ...Copying files to $HOME/.2fash/bin"
 	cp -a . "$FASH_DIRECTORY_BIN"
 }
 

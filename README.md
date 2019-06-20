@@ -26,15 +26,20 @@ bash install.sh
 
 **Get help:**
 ```sh
-./2fash help
+2fash help
 ```
 
 **Create account:**
 ```sh
-./2fash init
+2fash init
 ```
 
 **Get code:**
 ```sh
-./2fash code [ACCOUNT]
+2fash code [ACCOUNT]
 ```
+
+**List accounts**
+```sh
+2fash list
+``

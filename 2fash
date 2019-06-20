@@ -131,7 +131,7 @@ __2fash_print_help() {
 	__2fash_print_help_head "COMMANDS"
 	__2fash_print_help_command "help,\th" "show help"
 	__2fash_print_help_command "init,\ti" "add a new account"
-	__2fash_print_help_command "code,\tc" "get 2fa code for account"
+	__2fash_print_help_command "code,\tc" "get 2fa a code for the account"
 	__2fash_print_help_command "list,\tls" "print accounts"
 	__2fash_print_help_command "remove,\trm" "remove account"
 	__2fash_print_help_command "uninstall" "uninstall 2fash"

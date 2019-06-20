@@ -75,7 +75,7 @@ __2fash_read_gpg_data() {
 }
 
 __2fash_print_end() {
-	echo -e " ${FORMAT_NORM}Run following command to get the code:"
+	echo -e " ${FORMAT_NORM}Run the following command to get a code:"
 	echo -e " ${FORMAT_INV}${FORMAT_BOLD}${FASH_COMMAND} c $1${FORMAT_NORM}"
 }
 

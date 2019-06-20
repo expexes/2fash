@@ -75,7 +75,7 @@ __2fash_install_fash() {
 
 	echo ""
 	echo " Done"
-	echo " Restart terminal or run the following command:"
+	echo " If you are in bash then restart the terminal or run the following command:"
 	echo ""
 	echo -e " source $FASH_DIRECTORY/bin/bash/bash-init.sh"
 	echo ""

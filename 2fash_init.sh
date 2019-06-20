@@ -7,10 +7,24 @@ NO_PATTERN='@([nN]|[n|N][O|o])'
 
 USE_GPG=0
 
+__2fash_print_help_init() {
+	echo ""
+	__2fash_print_help_usage_head "${FASH_COMMAND} init [OPTION]..."
+	echo ""
+	__2fash_print_help_head "OPTIONS"
+	__2fash_print_help_command "--help, -h" "show help"
+	echo ""
+}
+
 for arg in $@; do
 	case ${arg} in
 		-d=*)
 				FASH_DIRECTORY_ACCOUNTS="${arg#*=}"
+				shift
+			;;
+		--help|-h)
+				__2fash_print_help_init
+				exit
 				shift
 			;;
 	esac

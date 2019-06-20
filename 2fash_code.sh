@@ -4,10 +4,12 @@ ACCOUNT=""
 ACCOUNT_DIRECTORY=""
 
 __2fash_print_help_code() {
+	echo ""
 	__2fash_print_help_usage_head "${FASH_COMMAND} code [ACCOUNT] [OPTION]..."
 	echo ""
 	__2fash_print_help_head "OPTIONS"
 	__2fash_print_help_command "--help, -h" "show help"
+	echo ""
 }
 
 
@@ -50,7 +52,6 @@ if [[ "$ACCOUNT" != "" ]]; then
 
 	! [[ "$totp" == "" ]] && oathtool -b --totp "$totp"
 else
-	echo ""
 	__2fash_print_help_code
 	exit 0
 fi

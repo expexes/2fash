@@ -6,18 +6,19 @@ ACCOUNT_DIRECTORY=""
 NO_PROMPT=0
 
 __2fash_print_help_remove() {
+	echo ""
 	__2fash_print_help_usage_head "${FASH_COMMAND} remove [ACCOUNT] [OPTION]..."
 	echo ""
 	__2fash_print_help_head "OPTIONS"
-	__2fash_print_help_command "--help, -h" "show help"
+	__2fash_print_help_command "--help, -h\t" "show help"
 	__2fash_print_help_command "--no-prompt, -np" "delete without ask"
+	echo ""
 }
 
 
 for arg in "$@"; do
 	case ${arg} in
 		--help|-h)
-				echo ""
 				__2fash_print_help_remove
 				exit 0
 			;;
@@ -46,7 +47,6 @@ if [[ "$ACCOUNT" != "" ]]; then
 	
 	rm -rf "$ACCOUNT_DIRECTORY" && echo "Deleted"
 else
-	echo ""
 	__2fash_print_help_remove
 	exit 0
 fi

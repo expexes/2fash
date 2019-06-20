@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 __2fash_print_help_list() {
+	echo ""
 	__2fash_print_help_usage_head "${FASH_COMMAND} list [OPTION]..."
 	echo ""
 	__2fash_print_help_head "OPTIONS"
 	__2fash_print_help_command "--help, -h" "show help"
 	__2fash_print_help_command "--clear, -c" "clear format"
+	echo ""
 }
 
 CLEAR_PRINT=0
@@ -17,7 +19,6 @@ for arg in "$@"; do
 			shift			
 			;;
 		--help|-h)
-			echo ""
 			__2fash_print_help_list
 			exit 0
 			;;

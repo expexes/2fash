@@ -6,7 +6,7 @@ source tools.sh
 
 check_deps
 
-arg=$1
+command=$1
 
 print_help() {
 	print_help_usage_head "${FASH_COMMAND} [COMMAND] ${FORMAT_LYELLOW}?${FORMAT_NORM}[ACCOUNT] [OPTION]..."
@@ -17,9 +17,10 @@ print_help() {
 	print_help_command "code,\tc" "get 2fa code for account"
 	print_help_command "list,\tls" "print accounts"
 	print_help_command "remove,\trm" "remove account"
+	print_help_command "uninstall" "uninstall 2fash"
 }
 
-case ${arg} in
+case ${command} in
 	[hH] | [hH][eE][lL][pP])
 		print_header
 		print_help
@@ -29,13 +30,16 @@ case ${arg} in
 		bash "$FASH_DIRECTORY_BIN/2fash_init.sh" -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
 	;;
 	[cC] | [cC][oO][dD][eE])
-		bash "./2fash_code.sh" -a="$2" "$@" # todo: fix
+		bash "$FASH_DIRECTORY_BIN/2fash_code.sh" -a="$2" "$@"
 	;;
 	[lL][sS] | [lL][iI][sS][tT])
 		bash "$FASH_DIRECTORY_BIN/2fash_list.sh" "$@"
 	;;
 	[rR][mM] | [rR][eE][mM][oO][vV][eE])
 		bash "$FASH_DIRECTORY_BIN/2fash_remove.sh" -a="$2" "$@"
+	;;
+	[uU][nN][iI][nN][sS][tT][aA][lL][lL])
+		bash "$FASH_DIRECTORY_BIN/2fash_uninstall.sh" "$FASH_DIRECTORY"
 	;;
 	*)
 		print_header

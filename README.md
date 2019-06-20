@@ -42,4 +42,4 @@ bash install.sh
 **List accounts**
 ```sh
 2fash list
-``
+```

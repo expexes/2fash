@@ -10,7 +10,6 @@ FASH_DIRECTORY_BIN="$FASH_DIRECTORY/bin"
 FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"
 
 mkdir -p "$FASH_DIRECTORY"
-mkdir -p "$FASH_DIRECTORY_BIN"
 mkdir -p "$FASH_DIRECTORY_ACCOUNTS"
 
 install_bin() {
@@ -33,8 +32,9 @@ install_fash() {
 		[[ ! ${really} =~ [yY]|[yY][eE][sS] ]] && exit 0
 
 		rm -rf "$FASH_DIRECTORY_BIN"
-		mkdir -p "$FASH_DIRECTORY_BIN"
 	fi
+
+	mkdir -p "$FASH_DIRECTORY_BIN"
 
 	install_bin
 	install_fash_bash

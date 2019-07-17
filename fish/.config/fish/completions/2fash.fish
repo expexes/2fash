@@ -37,6 +37,18 @@ complete -c 2fash -f -n "__2fash_using_no_command" \
 	-d "show help"
 complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 h help'
 
+# version
+complete -c 2fash -f -n "__2fash_using_no_command" \
+	-a "version" \
+	-d "show 2fash version"
+complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 version'
+
+# update
+complete -c 2fash -f -n "__2fash_using_no_command" \
+	-a "update" \
+	-d "update 2fash"
+complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 update'
+
 # init
 complete -c 2fash -f -n "__2fash_using_no_command" \
 	-a "init" \

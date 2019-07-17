@@ -130,10 +130,13 @@ __2fash_print_help() {
 	echo ""
 	__2fash_print_help_head "COMMANDS"
 	__2fash_print_help_command "help,\th" "show help"
-	__2fash_print_help_command "init,\ti" "add a new account"
-	__2fash_print_help_command "code,\tc" "get 2fa a code for the account"
-	__2fash_print_help_command "list,\tls" "print accounts"
-	__2fash_print_help_command "remove,\trm" "remove account"
+	__2fash_print_help_command "init,\ti" "add new account"
+	__2fash_print_help_command "code,\tc" "get 2fa code for the account"
+	__2fash_print_help_command "list,\tls" "print list of account"
+	__2fash_print_help_command "remove,\trm" "remove an account"
+	echo ""
+	__2fash_print_help_command "version" "show 2fash version"
+	__2fash_print_help_command "update\t" "update 2fash"
 	__2fash_print_help_command "uninstall" "uninstall 2fash"
 }
 
@@ -166,7 +169,16 @@ case $1 in
 		shift
 	;;
 	[uU][nN][iI][nN][sS][tT][aA][lL][lL])
-		source "$FASH_DIRECTORY_BIN/2fash_uninstall.sh"
+		source "$FASH_DIRECTORY_BIN/2fash_uninstall.sh" "$@"
+		shift
+	;;
+	[uU][pP][dD][aA][tT][eE])
+		source "$FASH_DIRECTORY_BIN/2fash_update.sh"
+		shift
+	;;
+	[vV][eE][rR][sS][iI][oO][nN])
+		__2fash_version=`cat ${FASH_DIRECTORY_BIN}/VERSION`
+		echo "2fash, version ${__2fash_version}"
 		shift
 	;;
 	*)

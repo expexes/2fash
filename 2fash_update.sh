@@ -23,7 +23,7 @@ for arg in "$@"; do
         case ${arg} in
                 --branch=*|-b=*)
                         __2fash_var_update_from_branch="${arg#*=}"
-                        shift
+						shift
                         ;;
                 --help|-h)
                         __2fash_print_help_list
@@ -50,7 +50,7 @@ __check_2fash_updates() {
 
 if ! [[ -z $__2fash_var_update_from_branch ]]; then
 	__check_2fash_updates "${__2fash_var_update_from_branch}"
-	git clone -b $1 "$GIT_CLONE_REPO" "$GIT_CLONE_DESTINATION" --single-branch && cd "$GIT_CLONE_DESTINATION" && __uninstall_2fash && basb install.sh
+	git clone -b "$__2fash_var_update_from_branch" "$GIT_CLONE_REPO" "$GIT_CLONE_DESTINATION" --single-branch && cd "$GIT_CLONE_DESTINATION" && __uninstall_2fash && bash install.sh
 else
 	__check_2fash_updates "master"
 	git clone "$GIT_CLONE_REPO" "$GIT_CLONE_DESTINATION" && cd "$GIT_CLONE_DESTINATION" && __uninstall_2fash && bash install.sh

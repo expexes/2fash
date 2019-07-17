@@ -2,6 +2,7 @@
 
 ACCOUNT=""
 ACCOUNT_DIRECTORY=""
+IS_COPY=0
 
 __2fash_print_help_code() {
 	echo ""
@@ -9,6 +10,8 @@ __2fash_print_help_code() {
 	echo ""
 	__2fash_print_help_head "OPTIONS"
 	__2fash_print_help_command "--help, -h" "show help"
+	__2fash_print_help_command "--copy, -cp" "copy code to clipboard using xclip"
+	__2fash_print_help_command "--force-print, -fp" "print code when using --copy"
 	echo ""
 }
 
@@ -18,6 +21,14 @@ for arg in $@; do
 		--help|-h)
 			__2fash_print_help_code
 			exit 0
+			shift
+		;;
+		--copy|-cp)
+			IS_COPY=1
+			shift
+		;;
+		--force-print|-fp)
+			IS_COPY=1
 			shift
 		;;
 		-d=*)
@@ -50,7 +61,11 @@ if [[ "$ACCOUNT" != "" ]]; then
 		totp=$(cat "$SECRET_FILE")
 	fi
 
-	! [[ "$totp" == "" ]] && oathtool -b --totp "$totp"
+	if ! [[ "$totp" == "" ]]; then
+		CODE=$(oathtool -b --totp "$totp")
+
+		[[ ! -z "$CODE" ]] && rhaecho "$CODE"
+	fi
 else
 	__2fash_print_help_code
 	exit 0

@@ -15,6 +15,15 @@ FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"
 mkdir -p "$FASH_DIRECTORY"
 mkdir -p "$FASH_DIRECTORY_ACCOUNTS"
 
+for arg in $@; do
+	case ${arg} in
+		--force|-f)
+			__I_FASH_FORCE_INSTALL=1
+			shift
+		;;
+	esac
+done
+
 __2fash_check_dependencies() {
 	to_install_arch=()
 	to_install_fedora=()
@@ -59,10 +68,10 @@ __2fash_install_fash() {
 	echo ""
 
 	if [[ -d "$FASH_DIRECTORY_BIN" ]]; then
-		echo -en "You already have 2fash installed. Do you really want to install again? (y/N): "
-		read really < /dev/tty
+		[[ "$__I_FASH_FORCE_INSTALL" != "1" ]] && echo -en "You already have 2fash installed. Do you really want to install again? (y/N): "
+		[[ "$__I_FASH_FORCE_INSTALL" != "1" ]] && read really < /dev/tty
 
-		[[ ! ${really} =~ [yY]|[yY][eE][sS] ]] && exit 0
+		[[ "$__I_FASH_FORCE_INSTALL" != "1" ]] && [[ ! ${really} =~ [yY]|[yY][eE][sS] ]] && exit 0
 
 		rm -rf "$FASH_DIRECTORY_BIN"
 	fi

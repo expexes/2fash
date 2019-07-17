@@ -9,7 +9,7 @@ GIT_CLONE_DESTINATION="/tmp/2fash-git-$(date | sed 's/ /_/g')"
 
 __2fash_print_help_list() {
         echo ""
-        __2fash_print_help_usage_head "${FASH_COMMAND} list [OPTION]..."
+        __2fash_print_help_usage_head "${FASH_COMMAND} update [OPTION]..."
         echo ""
         __2fash_print_help_head "OPTIONS"
         __2fash_print_help_command "--help, -h" "show help"

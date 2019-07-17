@@ -64,7 +64,7 @@ if [[ "$ACCOUNT" != "" ]]; then
 	if ! [[ "$totp" == "" ]]; then
 		CODE=$(oathtool -b --totp "$totp")
 
-		[[ ! -z "$CODE" ]] && rhaecho "$CODE"
+		[[ ! -z "$CODE" ]] && echo "$CODE"
 	fi
 else
 	__2fash_print_help_code

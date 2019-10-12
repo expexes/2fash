@@ -7,9 +7,9 @@ NO_PATTERN='@([nN]|[n|N][O|o])'
 
 USE_GPG=0
 
-__2fash_print_help_init() {
+__2fash_print_help_add() {
 	echo ""
-	__2fash_print_help_usage_head "${FASH_COMMAND} init [OPTION]..."
+	__2fash_print_help_usage_head "${FASH_COMMAND} add [OPTION]..."
 	echo ""
 	__2fash_print_help_head "OPTIONS"
 	__2fash_print_help_command "--help, -h" "show help"
@@ -23,7 +23,7 @@ for arg in $@; do
 				shift
 			;;
 		--help|-h)
-				__2fash_print_help_init
+				__2fash_print_help_add
 				exit
 				shift
 			;;

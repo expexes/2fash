@@ -49,11 +49,11 @@ complete -c 2fash -f -n "__2fash_using_no_command" \
 	-d "update 2fash"
 complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 update'
 
-# init
+# add
 complete -c 2fash -f -n "__2fash_using_no_command" \
-	-a "init" \
+	-a "add" \
 	-d "add a new account"
-complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 i init'
+complete -c 2fash -f -n '__2fash_command_has_enough_parameters 0 a add'
 
 # list
 complete -c 2fash -f -n "__2fash_using_no_command" \

@@ -130,7 +130,7 @@ __2fash_print_help() {
 	echo ""
 	__2fash_print_help_head "COMMANDS"
 	__2fash_print_help_command "help,\th" "show help"
-	__2fash_print_help_command "init,\ti" "add new account"
+	__2fash_print_help_command "add,\ta" "add new account"
 	__2fash_print_help_command "code,\tc" "get 2fa code for the account"
 	__2fash_print_help_command "list,\tls" "print list of account"
 	__2fash_print_help_command "remove,\trm" "remove an account"
@@ -153,7 +153,11 @@ case $1 in
 		shift
 	;;
 	[iI] | [iI][nN][iI][tT])
-		source "$FASH_DIRECTORY_BIN/2fash_init.sh" -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
+		__2fash_echo_error "Please use ${FORMAT_BOLD}2fash add${FORMAT_NORM} instead."
+		exit 1
+	;;
+	[aA] | [aA][dD][dD])
+		source "$FASH_DIRECTORY_BIN/2fash_add.sh" -d="$FASH_DIRECTORY_ACCOUNTS" "$@"
 		shift
 	;;
 	[cC] | [cC][oO][dD][eE])
@@ -185,5 +189,6 @@ case $1 in
 		__2fash_print_header
 		__2fash_print_help
 		echo ""
+		exit 1
 	;;
 esac

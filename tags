@@ -1,0 +1,51 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
+2fash	README.md	/^# 2fash$/;"	c
+2fash	bash/bash-init.sh	/^2fash() {$/;"	f
+Installation	README.md	/^### Installation$/;"	S
+Usage	README.md	/^### Usage$/;"	S
+__2fash_check_dependencies	2fash	/^__2fash_check_dependencies() {$/;"	f
+__2fash_check_dependencies	install.sh	/^__2fash_check_dependencies() {$/;"	f
+__2fash_echo_error	2fash	/^__2fash_echo_error() {$/;"	f
+__2fash_install_bin	install.sh	/^__2fash_install_bin() {$/;"	f
+__2fash_install_fash	install.sh	/^__2fash_install_fash() {$/;"	f
+__2fash_install_fash_bash	install.sh	/^__2fash_install_fash_bash() {$/;"	f
+__2fash_install_fash_fish	install.sh	/^__2fash_install_fash_fish() {$/;"	f
+__2fash_is_account_encrypted	2fash	/^__2fash_is_account_encrypted() {$/;"	f
+__2fash_is_account_exists	2fash	/^__2fash_is_account_exists() {$/;"	f
+__2fash_new_2fa_with_gpg	2fash_init.sh	/^__2fash_new_2fa_with_gpg() {$/;"	f
+__2fash_new_2fa_without_gpg	2fash_init.sh	/^__2fash_new_2fa_without_gpg() {$/;"	f
+__2fash_new_gpg_ask	2fash_init.sh	/^__2fash_new_gpg_ask() {$/;"	f
+__2fash_print_end	2fash_init.sh	/^__2fash_print_end() {$/;"	f
+__2fash_print_header	2fash	/^__2fash_print_header() {$/;"	f
+__2fash_print_help	2fash	/^__2fash_print_help() {$/;"	f
+__2fash_print_help_code	2fash_code.sh	/^__2fash_print_help_code() {$/;"	f
+__2fash_print_help_command	2fash	/^__2fash_print_help_command() {$/;"	f
+__2fash_print_help_head	2fash	/^__2fash_print_help_head() {$/;"	f
+__2fash_print_help_init	2fash_init.sh	/^__2fash_print_help_init() {$/;"	f
+__2fash_print_help_list	2fash_list.sh	/^__2fash_print_help_list() {$/;"	f
+__2fash_print_help_list	2fash_update.sh	/^__2fash_print_help_list() {$/;"	f
+__2fash_print_help_remove	2fash_remove.sh	/^__2fash_print_help_remove() {$/;"	f
+__2fash_print_help_usage_head	2fash	/^__2fash_print_help_usage_head() {$/;"	f
+__2fash_read_2fa	2fash_init.sh	/^__2fash_read_2fa() {$/;"	f
+__2fash_read_gpg_data	2fash_init.sh	/^__2fash_read_gpg_data() {$/;"	f
+__2fash_read_text_label	2fash	/^__2fash_read_text_label() {$/;"	f
+__2fash_read_text_label_bold	2fash	/^__2fash_read_text_label_bold() {$/;"	f
+__2fash_throw_error_if_account_doesnt_exist	2fash	/^__2fash_throw_error_if_account_doesnt_exist() {$/;"	f
+__2fash_throw_error_if_account_exists	2fash	/^__2fash_throw_error_if_account_exists() {$/;"	f
+__2fash_throw_error_if_account_secret_doesnt_exist	2fash	/^__2fash_throw_error_if_account_secret_doesnt_exist() {$/;"	f
+__2fash_use_gpg_ask	2fash_init.sh	/^__2fash_use_gpg_ask() {$/;"	f
+__check_2fash_updates	2fash_update.sh	/^__check_2fash_updates() {$/;"	f
+__compare_2fash_versions	2fash_update.sh	/^__compare_2fash_versions() {$/;"	f
+__uninstall_2fash	2fash_update.sh	/^__uninstall_2fash() {$/;"	f
+to_install_arch=	2fash	/^	to_install_arch=()$/;"	f
+to_install_arch=	install.sh	/^	to_install_arch=()$/;"	f
+to_install_fedora=	2fash	/^	to_install_fedora=()$/;"	f
+to_install_fedora=	install.sh	/^	to_install_fedora=()$/;"	f
+to_install_ubuntu=	2fash	/^	to_install_ubuntu=()$/;"	f
+to_install_ubuntu=	install.sh	/^	to_install_ubuntu=()$/;"	f

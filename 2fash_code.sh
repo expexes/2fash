@@ -64,7 +64,12 @@ if [[ "$ACCOUNT" != "" ]]; then
 	if ! [[ "$totp" == "" ]]; then
 		CODE=$(oathtool -b --totp "$totp")
 
-		[[ ! -z "$CODE" ]] && echo "$CODE"
+		if [[ $IS_COPY == 1 ]]; then
+
+			[[ ! -z "$CODE" ]] && echo -en "$CODE" | xclip -selection clipboard
+		else
+			[[ ! -z "$CODE" ]] && echo "$CODE"
+		fi
 	fi
 else
 	__2fash_print_help_code

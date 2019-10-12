@@ -7,15 +7,16 @@ simple 2fa bash tool
 **Dependencies:**
 - `oath-toolkit`
 - `gnupg`
+- `xclip` *(optional)*
 
 **Using curl:**
 ```sh
-curl -s https://gitlab.com/expexes/2fash/raw/master/remote-install.sh | bash
+curl -s https://gitlab.com/kohutd/2fash/raw/master/remote-install.sh | bash
 ```
 
 **Using git:**
 ```sh
-git clone https://gitlab.com/expexes/2fash.git
+git clone https://gitlab.com/kohutd/2fash.git
 cd 2fash
 bash install.sh
 ```
@@ -31,7 +32,7 @@ bash install.sh
 
 **Create account:**
 ```sh
-2fash init
+2fash add
 ```
 
 **Get code:**

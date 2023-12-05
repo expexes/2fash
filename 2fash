@@ -6,6 +6,10 @@ FASH_COMMAND="2fash"
 [[ -z "$FASH_DIRECTORY_BIN" ]] && FASH_DIRECTORY_BIN="$FASH_DIRECTORY/bin"
 [[ -z "$FASH_DIRECTORY_ACCOUNTS" ]] && FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"
 
+#[[ -z "$FASH_DIRECTORY" ]] && FASH_DIRECTORY="$HOME/.2fash"
+#[[ -z "$FASH_DIRECTORY_BIN" ]] && FASH_DIRECTORY_BIN="."
+#[[ -z "$FASH_DIRECTORY_ACCOUNTS" ]] && FASH_DIRECTORY_ACCOUNTS="$FASH_DIRECTORY/accounts"
+
 
 # --- FORMAT ---
 FORMAT_DEFAULT="\e[39m"
@@ -134,6 +138,8 @@ __2fash_print_help() {
 	__2fash_print_help_command "code,\tc" "get 2fa code for the account"
 	__2fash_print_help_command "list,\tls" "print list of account"
 	__2fash_print_help_command "remove,\trm" "remove an account"
+	__2fash_print_help_command "export,\tex" "export accounts to a file"
+#	__2fash_print_help_command "import,\tim" "import accounts from a file"
 	echo ""
 	__2fash_print_help_command "version" "show 2fash version"
 	__2fash_print_help_command "update\t" "update 2fash"
@@ -170,6 +176,14 @@ case $1 in
 	;;
 	[rR][mM] | [rR][eE][mM][oO][vV][eE])
 		source "$FASH_DIRECTORY_BIN/2fash_remove.sh" -a="$2" "$@"
+		shift
+	;;
+	[eE][xX] | [eE][xX][pP][oO][rR][tT])
+		source "$FASH_DIRECTORY_BIN/2fash_export.sh" "$@"
+		shift
+	;;
+	[iI][mM] | [iI][mM][pP][oO][rR][tT])
+		source "$FASH_DIRECTORY_BIN/2fash_import.sh" "$@"
 		shift
 	;;
 	[uU][nN][iI][nN][sS][tT][aA][lL][lL])

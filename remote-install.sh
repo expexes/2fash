@@ -2,7 +2,7 @@
 
 # -------------------------------------------------------
 
-GIT_CLONE_REPO="https://github.com/kohutd/2fash"
+GIT_CLONE_REPO="https://gitlab.com/kohutd/2fash"
 GIT_CLONE_DESTINATION="/tmp/2fash-git-$(date | sed 's/ /_/g')"
 
 # -------------------------------------------------------

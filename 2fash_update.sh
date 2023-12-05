@@ -42,7 +42,7 @@ __uninstall_2fash() {
 
 __check_2fash_updates() {
 	__2fash_var_current_version="$(cat "${FASH_DIRECTORY_BIN}/VERSION")"
-	__2fash_var_next_version="$(curl -s "${GIT_CLONE_REPO}/raw/${1}/VERSION")"
+	__2fash_var_next_version="$(curl -s "${GIT_CLONE_REPO}/raw/master/VERSION")"
 
 	! __compare_2fash_versions $__2fash_var_next_version $__2fash_var_current_version && echo "latest version already installed" && exit 1
 	echo "  installing ${__2fash_next_version}"
